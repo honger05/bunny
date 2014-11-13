@@ -1,0 +1,8 @@
+{
+    "name": "class",
+    "family": "bunny",
+    "version": "1.0.0",
+    "spm": {
+        "output": ["class.js"]
+    }
+}

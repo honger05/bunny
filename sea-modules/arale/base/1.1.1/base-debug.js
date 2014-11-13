@@ -1,4 +1,4 @@
-define("arale/base/1.1.1/base-debug", [ "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "./aspect-debug", "./attribute-debug" ], function(require, exports, module) {
+define("arale/base/1.1.1/base-debug", [ "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "arale/base/1.1.1/aspect-debug", "arale/base/1.1.1/attribute-debug" ], function(require, exports, module) {
     // Base
     // ---------
     // Base 是一个基础类，提供 Class、Events、Attrs 和 Aspect 支持。
