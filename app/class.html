@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Class</title>
+</head>
+<body>
+<p>pig</p>
+
+<script charset="utf-8" id="seajsnode" src="../sea-modules/seajs/seajs/2.2.1/sea.js"></script>
+<script>
+  seajs.config({
+    base: '../sea-modules',
+    alias: {
+      'class': 'bunny/class/1.0.0/class-debug'
+    }
+  });
+
+  /*pig.js*/
+  define('./pig',function(require,exports,module){
+    var Class = require('class');
+
+    var Pig = Class.create({
+      initialize:function(name){
+        this.name = name;
+      },
+      talk: function(){
+        alert('i am '+this.name);
+      }
+    });
+
+    module.exports = Pig;
+  });
+
+  /*red-pig.js*/
+  define('./red-pig',function(require,exports,module){
+    var Pig = require('./pig');
+
+    var RedPig = Pig.extend({
+      initialize:function(name){
+        RedPig.superclass.initialize.call(this,name);
+      },
+      color: 'red'
+    });
+
+    module.exports = RedPig;
+  });
+
+  /*flyable.js*/
+  define('./flyable',function(require,exports,module){
+    exports.fly = function(){
+      alert('我飞起来了');
+    }
+  });
+
+  /*flyable-red-pig.js*/
+  define('./flyable-red-pig',function(require,exports,module){
+    var RedPig = require('./red-pig');
+    var Flyable = require('./flyable');
+
+    var FlyableRedPig = RedPig.extend({
+      initialize: function(name){
+        RedPig.superclass.initialize.call(this,name);
+      },
+      Implements: Flyable
+    });
+
+    module.exports = FlyableRedPig;
+  });
+
+  /*flyable-red-pig-extension.js*/
+  define('./flyable-red-pig-extension',function(require,exports,module){
+    var FlyableRedPig = require('./flyable-red-pig');
+
+    FlyableRedPig.implement({
+      swim: function(){
+        alert('我还会游泳');
+      }
+    });
+
+  });
+
+
+  seajs.use(['class','./pig','./flyable-red-pig','./flyable-red-pig-extension'], function(Class,Pig,FlyableRedPig) {
+    var pig = new FlyableRedPig("飞天红猪侠");
+
+//    alert(pig instanceof Pig);
+
+//    pig.talk();
+//    pig.fly();
+//    pig.swim();
+
+
+    //class other function
+    function Animal(name){
+      this.name = name;
+    }
+    Animal.prototype.talk = function(){
+      alert(this.name);
+    }
+
+    var Dog = Class(Animal).extend({
+      swim: function(){
+        alert('i am swimming!')
+      }
+    });
+
+    var dog = new Dog('dog');
+    dog.talk();
+    dog.swim();
+
+  });
+</script>
+</body>
+</html>

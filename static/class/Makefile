@@ -1,0 +1,12 @@
+
+build:
+	@spm build
+
+deploy:
+	@rm -rf ../../sea-modules/bunny/class
+	@mkdir  ../../sea-modules/bunny/class
+	@mkdir  ../../sea-modules/bunny/class/1.0.0
+	@cp     dist/*.* ../../sea-modules/bunny/class/1.0.0
+	@echo
+	@echo   " deploy to sea-modules/bunny/class/1.0.0"
+	@echo
