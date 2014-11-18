@@ -1,10 +1,8 @@
-define("arale/widget/1.1.1/widget-debug", [ "arale/base/1.1.1/base-debug", "arale/class/1.1.0/class-debug", "arale/events/1.1.0/events-debug", "$-debug", "arale/widget/1.1.1/daparser-debug", "arale/widget/1.1.1/auto-render-debug" ], function(require, exports, module) {
-    // Widget
-    // ---------
+define("bunny/widget/1.0.0/widget-debug", [ "bunny/base/1.0.0/base-debug", "$-debug", "bunny/widget/1.0.0/daparser-debug", "bunny/widget/1.0.0/auto-render-debug" ], function(require, exports, module) {
     // Widget 是与 DOM 元素相关联的非工具类组件，主要负责 View 层的管理。
     // Widget 组件具有四个要素：描述状态的 attributes 和 properties，描述行为的 events
     // 和 methods。Widget 基类约定了这四要素创建时的基本流程和最佳实践。
-    var Base = require("arale/base/1.1.1/base-debug");
+    var Base = require("bunny/base/1.0.0/base-debug");
     var $ = require("$-debug");
     var DAParser = require("./daparser-debug");
     var AutoRender = require("./auto-render-debug");
@@ -339,9 +337,7 @@ define("arale/widget/1.1.1/widget-debug", [ "arale/base/1.1.1/base-debug", "aral
     }
 });
 
-define("arale/widget/1.1.1/daparser-debug", [ "$-debug" ], function(require, exports) {
-    // DAParser
-    // --------
+define("bunny/widget/1.0.0/daparser-debug", [ "$-debug" ], function(require, exports) {
     // data api 解析器，提供对单个 element 的解析，可用来初始化页面中的所有 Widget 组件。
     var $ = require("$-debug");
     // 得到某个 DOM 元素的 dataset
@@ -410,7 +406,7 @@ define("arale/widget/1.1.1/daparser-debug", [ "$-debug" ], function(require, exp
     }
 });
 
-define("arale/widget/1.1.1/auto-render-debug", [ "$-debug" ], function(require, exports) {
+define("bunny/widget/1.0.0/auto-render-debug", [ "$-debug" ], function(require, exports) {
     var $ = require("$-debug");
     var DATA_WIDGET_AUTO_RENDERED = "data-widget-auto-rendered";
     // 自动渲染接口，子类可根据自己的初始化逻辑进行覆盖

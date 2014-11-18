@@ -1,0 +1,12 @@
+{
+    "name": "widget",
+    "family": "bunny",
+    "version": "1.0.0",
+    "spm": {
+      "alias": {
+        "$": "$",
+        "base": "base"
+      },
+      "output": ["widget.js"]
+    }
+}

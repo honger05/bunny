@@ -1,0 +1,12 @@
+{
+    "name": "base",
+    "family": "bunny",
+    "version": "1.0.0",
+    "spm": {
+      "alias": {
+        "class": "class",
+        "events": "events"
+      },
+      "output": ["base.js"]
+    }
+}

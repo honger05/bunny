@@ -7,6 +7,7 @@ deploy:
 	@mkdir  ../../sea-modules/bunny/class
 	@mkdir  ../../sea-modules/bunny/class/1.0.0
 	@cp     dist/*.* ../../sea-modules/bunny/class/1.0.0
+	@rm -rf dist
 	@echo
 	@echo   " deploy to sea-modules/bunny/class/1.0.0"
 	@echo
