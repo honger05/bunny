@@ -1,0 +1,14 @@
+{
+    "name": "overlay",
+    "family": "bunny",
+    "version": "1.0.0",
+    "spm": {
+      "alias": {
+        "$": "$",
+        "widget": "widget",
+        "iframe-shim": "iframe-shim",
+        "position": "position"
+      },
+      "output": ["overlay.js","mask.js"]
+    }
+}
