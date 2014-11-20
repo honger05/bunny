@@ -1,0 +1,12 @@
+{
+    "name": "select2",
+    "family": "jquery",
+    "version": "3.5.2",
+    "description": "select2下拉框美化插件",
+    "spm": {
+      "alias": {
+        "$": "$"
+      },
+      "output": ["select2.js", "select2.png", "select2.css","select2-bootstrap.css", "select2-spinner.gif"]
+    }
+}

@@ -1,0 +1,13 @@
+{
+    "name": "area",
+    "family": "jquery",
+    "version": "1.0.0",
+    "description": "基于select2的城市三级联动",
+    "spm": {
+      "alias": {
+        "$": "$",
+        "select2": "select2"
+      },
+      "output": ["area.js"]
+    }
+}
