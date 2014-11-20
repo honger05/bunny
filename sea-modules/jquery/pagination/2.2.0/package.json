@@ -1,0 +1,29 @@
+{
+  "family": "jquery",
+  "name": "pagination",
+  "version": "2.2.0",
+  "description": "When you have a a large list of items (e.g. search results or news articles), you can display them grouped in pages and present navigational elements to move from one page to another. This plugin creates these navigational elements.",
+  "homepage": "https://github.com/gbirke/jquery_pagination",
+  "author": "Gabriel Birke",
+  "maintainers": [
+    "Gabriel Birke"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gbirke/jquery_pagination.git"
+  },
+  "bugs": {
+    "url": ""
+  },
+  "keywords": [],
+  "licenses": "MIT",
+  "spm": {
+    "output": [
+      "pagination.js",
+      "pagination.css"
+    ],
+    "alias": {},
+    "devAlias": {},
+    "engines": {}
+  }
+}

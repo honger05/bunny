@@ -1,0 +1,12 @@
+{
+    "name": "lazyload",
+    "family": "jquery",
+    "version": "1.9.3",
+    "description": "图片懒加载",
+    "spm": {
+      "alias": {
+        "$": "$"
+      },
+      "output": ["lazyload.js"]
+    }
+}

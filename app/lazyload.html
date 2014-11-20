@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>lazyload</title>
+  <style>
+    #container {
+      height: 600px;
+      overflow: scroll;
+    }
+  </style>
+</head>
+<body>
+
+<div id="container"><!--src:占位符  data-original：真实路径-->
+  <img class="lazy" data-original="../static/img/lazyload/bmw_m1_hood.jpg"  width="840" heigh="480">
+  <img class="lazy" data-original="../static/img/lazyload/bmw_m1_side.jpg"  width="840" heigh="480">
+  <img class="lazy" data-original="../static/img/lazyload/bmw_m3_gt.jpg"  width="840" heigh="480">
+</div>
+
+<script charset="utf-8" id="seajsnode" src="../sea-modules/seajs/seajs/2.2.1/sea.js"></script>
+<script>
+  seajs.config({
+    base: '../sea-modules',
+    alias: {
+      '$': 'jquery/jquery/2.1.0/jquery',
+      'lazyload': 'jquery/lazyload/1.9.3/lazyload'
+    }
+  });
+
+  seajs.use(["$","lazyload"],function($){
+    $("img.lazy").lazyload({
+      //placeholder : "../static/img/lazyload/grey.gif",//占位符
+      event : "click",//加载事件
+      threshold : 0,//敏感度  距离屏幕200像素时就加载
+      effect : "fadeIn" //加载效果
+    });
+  });
+
+</script>
+</body>
+</html>
