@@ -1,0 +1,12 @@
+{
+    "name": "simple-pagination",
+    "family": "jquery",
+    "version": "1.6.0",
+    "description": "分页插件",
+    "spm": {
+      "alias": {
+        "$": "$"
+      },
+      "output": ["simple-pagination.js","simple-pagination.css"]
+    }
+}
