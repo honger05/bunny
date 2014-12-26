@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>deal - dom event animate lang 定制 工具集</title>
+</head>
+<body>
+  <p id="pp">dom event animate lang 定制 工具集 Demo</p>
+  <p class="findme">你是在找我吗？</p>
+  <p class="findme1 fff">你hai shi 是在找我吗？</p>
+  <p class="ffsf">你hai shasas 我吗？</p>
+
+  <script src="../sea-modules/seajs/seajs/2.2.1/sea.js"></script>
+  <script>
+    seajs.config({
+      base: "../sea-modules",
+      alias: {
+        "deal": "deal/deal/1.1.0/deal"
+      }
+    });
+
+    seajs.use(["../static/deal/src/dom"],function(dom){
+      //var d = dom.query("#pp");
+      var f = dom.query(".findme");
+      console.log(f);
+
+      dom.addClass(f[0],"findme22");
+      dom.removeClass(f[0],"findme");
+    });
+  </script>
+</body>
+</html>

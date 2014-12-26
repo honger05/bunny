@@ -1,0 +1,14 @@
+{
+  "name": "deal",
+  "family": "deal",
+  "description": "(d)dom (e)event (a)animate (l)lang 定制工具集",
+  "author": "honger05",
+  "version": "1.1.0",
+  "repository": {
+    "type": "git",
+    "url": "http://www.github.com/honger05/deal/"
+  },
+  "spm": {
+    "output": ["deal.js"]
+  }
+}
