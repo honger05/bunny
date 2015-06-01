@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+</head>
+<body>
+
+    <div id="dragDiv" style="position:absolute; background-color:#FFFFFF;border:solid 1px #849BCA;width:200px;left:10px;top:10px;filter:alpha(opacity=100);opacity:1;">
+        <table cellpadding="0" cellspacing="0" border="0" style="width:100%;border-collapse:collapse; ">
+            <tr id="titleBar" style="height:22px; text-align:left; background-color:#547BC9;color:White; padding:3px;">
+                <th align="left" unselectable="on" >Title</th>
+            </tr>
+            <tr style="height:130px;padding:3px;" align="left" valign="top" unselectable="on">
+                <td><img src="http://images.cnblogs.com/logo_small.gif" alt="pic for drag"  /> Content...</td> <!---->
+            </tr>
+        </table>
+    </div>
+    <div style="position:absolute; font-family:Tahoma;border:solid 1px #849BCA; background-color:#AAAAAA;width:200px;height:100px;left:210px;top:210px;filter:alpha(opacity=100);opacity:1; z-index:999">Are you able to cover me?</div>
+
+
+    <script src="../sea-modules/seajs/seajs/2.2.1/sea-debug.js"></script>
+    <script src="../sea-config.js"></script>
+    <script>
+
+        seajs.use('drag',function(Drag){
+
+            /**
+             * titleBar: 拖动部分
+             * dragDiv: 移动部分
+             * keepOrigin: 是否保留原来的
+             * */
+            new Drag("titleBar", "dragDiv", { opacity: 100, keepOrigin: true ,area: { left: 50, right: 500, top: 100, bottom: 400}}); //,
+
+        })
+
+    </script>
+</body>
+</html>

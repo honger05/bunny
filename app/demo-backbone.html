@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>backbone</title>
+</head>
+<body>
+
+
+<script src="../sea-modules/seajs/seajs/2.2.1/sea-debug.js"></script>
+<script src="../sea-config.js"></script>
+<script>
+
+    seajs.use(['$-debug','backbone-debug','underscore-debug'],function($,Backbone,_){
+
+        console.log(Backbone);
+
+
+        var Router = Backbone.Router.extend({
+            routes: {
+                '': 'home',
+                'books/:bookName': 'loadBook'
+            },
+            initialize: function(){
+                //初始化
+                this.homeView = new HomeView;
+                this.bookView = new BookView;
+            },
+            home: function(){
+                this.homeView.render();
+            },
+            loadBook: function(bookName){
+                this.bookView.render(bookName);
+            }
+        });
+
+
+        var HomeView = Backbone.View.extend({
+            el: 'body',
+            template: _.template('<a href="#books/hh"> Hello World! </a>'),
+            render: function(){
+                this.$el.html(this.template());
+            }
+        });
+
+        var BookView = Backbone.View.extend({
+            el: 'body',
+            render: function(bookName){
+                this.$el.html('<a href="#">book!</a> '+bookName);
+            }
+        });
+
+        var app = new Router;
+        Backbone.history.start();
+
+    });
+
+</script>
+</body>
+</html>

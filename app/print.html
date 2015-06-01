@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>print ui</title>
+    <style>
+        .print-list{
+            display: block;
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            border: 1px solid #005C5F;
+        }
+        .print-list li{
+            display: block;
+            width: 100px;
+            height: 20px;
+            border: 1px solid #005C5F;
+            background-color: #CCCCCC;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <ul class="print-list">
+        <li class="drag-item">收件人</li>
+        <li>寄件人</li>
+        <li>寄件地址</li>
+    </ul>
+    <script src="../sea-modules/seajs/seajs/2.2.1/sea-debug.js"></script>
+    <script src="../sea-config.js"></script>
+    <script>
+
+        seajs.use(['$','drag'],function($,Drag){
+
+            /**
+             * titleBar: 拖动部分
+             * dragDiv: 移动部分
+             * keepOrigin: 是否保留原来的
+             * */
+            new Drag("drag-item", "drag-item", { opacity: 100, keepOrigin: true ,area: { left: 50, right: 500, top: 100, bottom: 400}}); //,
+
+        })
+
+    </script>
+    <script>
+        var arr = [{fieldName:'收件人'},{fieldName:'寄件人'},{fieldName:'寄件地址'}];
+    </script>
+
+</body>
+</html>

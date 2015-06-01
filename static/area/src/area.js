@@ -33,7 +33,8 @@ define(function(require){
     })
 
     $('#loc_town').change(function() {
-      $('input[@name=location_id]').val($(this).val());
+        debugger;
+      $('input[name="location_id"]').val($(this).val());
     })
 
     if (province) {

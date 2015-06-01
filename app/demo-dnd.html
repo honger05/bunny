@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag and drop</title>
+    <style>
+        .container {
+            margin-left: 100px;
+            width: 500px;
+            height: 200px;
+            background: #CCC;
+        }
+        .print-list{
+            width: 150px;
+        }
+        .print-title {
+            height: 37px;
+            line-height: 37px;
+            padding-left: 10px;
+            background-color: #e5e5e5;
+            border: 1px solid #cccccc;
+            border-bottom: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .j-menu {
+            border: 1px solid #CCC;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .j-menu .j-menu-item {
+            height: 25px;
+            line-height: 25px;
+            border-bottom: 1px solid #CCC;
+            margin: 0;
+            padding: 3px 20px;
+            cursor: pointer;
+            background: #f5f5f5;
+            background: -moz-linear-gradient(top,#FFF 0,#EAEAEA 100%);
+            background: -webkit-gradient(linear,left top,left bottom,color-stop(0,#EAEAEA),color-stop(100%,rgba(229, 59, 44, 1)));
+            background: -webkit-linear-gradient(top,#FFF 0,#EAEAEA 100%);
+            background: -o-linear-gradient(top,#FFF 0,#EAEAEA 100%);
+            background: -ms-linear-gradient(top,#FFF 0,#EAEAEA 100%);
+            background: linear-gradient(top,#FFF 0,#EAEAEA 100%);
+            filter: progid:dximagetransform.Microsoft.gradient(startcolorstr='#FFFFFF',endcolorstr='#EEEEEE',gradienttype=0);
+        }
+    </style>
+</head>
+<body>
+
+
+    <div id="ex4">
+        <div class="print-list">
+            <h2 class="print-title">明细</h2>
+            <ul class="j-menu">
+                <li class="j-menu-item drag">收件人</li>
+                <li class="j-menu-item drag">寄件人</li>
+                <li class="j-menu-item drag">寄件地址</li>
+            </ul>
+        </div>
+        <br />
+        <div class="container"></div>
+    </div>
+
+    <script src="../sea-modules/seajs/seajs/2.2.1/sea-debug.js"></script>
+    <script src="../sea-config.js"></script>
+    <script>
+
+        seajs.use(['dnd-debug','$'],function(Dnd,$){
+
+            var dnd = new Dnd('#ex4 .drag', {drops: '#ex4 .container',visible: true});
+
+            dnd.on('drop', function(dataTransfer, proxy, drop){
+                console.log(proxy.position());
+            });
+
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>条形码</title>
+</head>
+<body>
+    号码：<input id="txt1" type="text" style="width:150px;"/>
+    格式：<select id="sel1" type="select" style="width:150px;">
+        <option value ="std25">std25</option>
+        <option value ="int25">int25</option>
+        <option value="ean8">ean8</option>
+        <option value="ean13">ean13</option>
+        <option value="code11">code11</option>
+        <option value="code39">code39</option>
+        <option value="code93">code93</option>
+        <option value="code128">code128</option>
+        <option value="codabar">codabar</option>
+        <option value="msi">msi</option>
+        <option value="datamatrix">datamatrix</option>
+    </select>
+
+    <input id="btn1" type="button" value="输出条形码"/>
+
+    <br/><br/><br/>
+
+    <div id="div1"></div>
+
+    <div id="bcTarget" style="display: none"></div>
+
+
+    <script src="../sea-modules/seajs/seajs/2.2.1/sea-debug.js"></script>
+    <script src="../sea-config.js"></script>
+    <script>
+
+        seajs.use(['$-debug','barcode-debug'],function($){
+
+            $('#btn1').on('click',function(){
+
+                $('#div1').barcode($('#txt1').val(),$('#sel1').val());
+
+            });
+
+
+            $("#bcTarget").barcode("1234567890128", "ean13");
+        });
+
+    </script>
+</body>
+</html>
