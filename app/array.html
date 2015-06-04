@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>toArray</title>
+</head>
+<body>
+	
+	<script>
+		var dataset = [ {tenentName:"zk1",tenentId:12,age:111},
+										{tenentName:"zk2",tenentId:13,age:112},
+										{tenentName:"zk3",tenentId:14,age:113}]
+
+		var wl = [{fieldName:'tenentName'},{fieldName:'asda'}]
+
+		//[['zk1',12],['zk2',13],['zk3',14]]
+
+
+		var arr = [];
+		for(var i in dataset){
+			var value = dataset[i];
+			arr.push(toArray(value,wl))
+		}			
+		console.log(arr)
+
+		function toArray(value,wl){
+			var temp = [];
+			for(var k in wl){
+				var pass = wl[k].fieldName;
+				if(value[pass]){
+					temp.push(value[pass])
+				}else{
+					temp.push('')
+				}
+			}
+			return temp;
+		}
+
+
+	</script>
+</body>
+</html>
