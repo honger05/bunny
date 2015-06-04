@@ -207,7 +207,7 @@ define("arale/base/1.1.1/attribute-debug", [], function(require, exports) {
     (function() {
         var props = [];
         function Ctor() {
-            this.x = 1;
+            this.x = 1;;
         }
         Ctor.prototype = {
             valueOf: 1,
