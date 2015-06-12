@@ -1,4 +1,4 @@
-define("gallery/underscore/1.6.0/underscore-debug", [], function(require, exports, module) {
+//define("gallery/underscore/1.6.0/underscore-debug", [], function(require, exports, module) {
     //     Underscore.js 1.6.0
     //     http://underscorejs.org
     //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -7,21 +7,31 @@ define("gallery/underscore/1.6.0/underscore-debug", [], function(require, export
         // Baseline setup
         // --------------
         // Establish the root object, `window` in the browser, or `exports` on the server.
+        // 创建一个全局对象, 在浏览器中表示为window对象, 在Node.js中表示global对象
         var root = this;
         // Save the previous value of the `_` variable.
+        // 保存"_"(下划线变量)被覆盖之前的值
+        // 如果出现命名冲突或考虑到规范, 可通过_.noConflict()方法恢复"_"被Underscore占用之前的值, 并返回Underscore对象以便重新命名
         var previousUnderscore = root._;
         // Establish the object that gets returned to break out of a loop iteration.
+        // 创建一个空的对象常量, 便于内部共享使用
         var breaker = {};
         // Save bytes in the minified (but not gzipped) version:
+        // 将内置对象的原型链缓存在局部变量
         var ArrayProto = Array.prototype, ObjProto = Object.prototype, FuncProto = Function.prototype;
         // Create quick reference variables for speed access to core prototypes.
+        // 将内置对象原型中的常用方法缓存在局部变量
         var push = ArrayProto.push, slice = ArrayProto.slice, concat = ArrayProto.concat, toString = ObjProto.toString, hasOwnProperty = ObjProto.hasOwnProperty;
         // All **ECMAScript 5** native function implementations that we hope to use
         // are declared here.
+        // 这里定义了一些JavaScript 1.6提供的新方法
+        // 如果宿主环境中支持这些方法则优先调用, 如果宿主环境中没有提供, 则会由Underscore实现
         var nativeForEach = ArrayProto.forEach, nativeMap = ArrayProto.map, nativeReduce = ArrayProto.reduce, nativeReduceRight = ArrayProto.reduceRight, nativeFilter = ArrayProto.filter, nativeEvery = ArrayProto.every, nativeSome = ArrayProto.some, nativeIndexOf = ArrayProto.indexOf, nativeLastIndexOf = ArrayProto.lastIndexOf, nativeIsArray = Array.isArray, nativeKeys = Object.keys, nativeBind = FuncProto.bind;
         // Create a safe reference to the Underscore object for use below.
+        // 创建对象式的调用方式, 将返回一个Underscore包装器, 包装器对象的原型中包含Underscore所有方法(类似与将DOM对象包装为一个jQuery对象)
         var _ = function(obj) {
             if (obj instanceof _) return obj;
+            // 所有Underscore对象在内部均通过wrapper对象进行构造
             if (!(this instanceof _)) return new _(obj);
             this._wrapped = obj;
         };
@@ -29,15 +39,17 @@ define("gallery/underscore/1.6.0/underscore-debug", [], function(require, export
         // backwards-compatibility for the old `require()` API. If we're in
         // the browser, add `_` as a global object via a string identifier,
         // for Closure Compiler "advanced" mode.
-        if (typeof exports !== "undefined") {
+        // 针对不同的宿主环境, 将Undersocre的命名变量存放到不同的对象中
+        if (typeof exports !== "undefined") {// Node.js环境
             if (typeof module !== "undefined" && module.exports) {
                 exports = module.exports = _;
             }
             exports._ = _;
-        } else {
+        } else {// 浏览器环境中Underscore的命名变量被挂在window对象中
             root._ = _;
         }
         // Current version.
+        // 版本声明
         _.VERSION = "1.6.0";
         // Collection Functions
         // --------------------
@@ -1134,12 +1146,18 @@ define("gallery/underscore/1.6.0/underscore-debug", [], function(require, export
         // can be used OO-style. This wrapper holds altered versions of all the
         // underscore functions. Wrapped objects may be chained.
         // Helper function to continue chaining intermediate results.
+        // 返回一个对象, 如果当前Underscore调用了chain()方法(即_chain属性为true), 则返回一个被包装的Underscore对象, 否则返回对象本身
+        // result函数用于在构造方法链时返回Underscore的包装对象
         var result = function(obj) {
             return this._chain ? _(obj).chain() : obj;
         };
         // Add all of the Underscore functions to the wrapper object.
+        // 将内部定义的_(即Underscore方法集合对象)中的方法复制到wrapper的原型链中(即Underscore的原型链中)
+        // 这是为了在构造对象式调用的Underscore对象时, 这些对象也会具有内部定义的Underscore方法
         _.mixin(_);
         // Add all mutator Array functions to the wrapper.
+        // 将Array.prototype中的相关方法添加到Underscore对象中, 因此在封装后的Underscore对象中也可以直接调用Array.prototype中的方法
+        // 如: _([]).push()
         each([ "pop", "push", "reverse", "shift", "sort", "splice", "unshift" ], function(name) {
             var method = ArrayProto[name];
             _.prototype[name] = function() {
@@ -1179,5 +1197,11 @@ define("gallery/underscore/1.6.0/underscore-debug", [], function(require, export
                 return _;
             });
         }
+
+        if (typeof define === 'function' && define.cmd) {
+            define('gallery/underscore/1.6.0/underscore-debug',[],function() {
+                return _;
+            })
+        }
     }).call(this);
-});
+//});

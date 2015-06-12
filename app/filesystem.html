@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html5 利用download属性 导出数据</title>
+</head>
+<body>
+	
+
+	<a download="downlaod.txt" href="data:text/txt;charset=utf-8,download 测试数据">download</a> 
+
+
+	<a id="test1" onclick="clickDownload(this)" download="downlaod.csv" href="#">中文不乱码</a>  
+
+	<a id="mylink" href="">download blob</a>  
+
+	<script>
+		  function clickDownload(aLink) {  
+         var str = "栏位1,栏位2,栏位3\n值1,值2,值3";  
+         str =  encodeURIComponent(str);  
+         //防止excel打开中文乱码\ufeff
+         aLink.href = "data:text/csv;charset=utf-8,\ufeff"+str;  
+         aLink.click();  
+      }  
+
+      var data = '栏位1,栏位2,栏位3\n值1,值2,值3'
+      //防止excel打开中文乱码\ufeff
+			data = "\ufeff"+data; 
+      var blob = new Blob([data], { type: 'text/csv' }); //new way  
+      var csvUrl = URL.createObjectURL(blob);  
+      var mylink = document.getElementById("mylink");
+      mylink.href = csvUrl;   
+      mylink.setAttribute("download", "aaa.csv")
+
+	</script>
+</body>
+</html>

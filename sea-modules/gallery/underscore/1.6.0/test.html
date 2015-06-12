@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test underscore</title>
+</head>
+<body>
+
+<script src="underscore-debug.js"></script>
+
+<script>
+    var bolt = _.map ({"a":10, "b": "string"}, function(value, index, list) { return  index; });
+    console.log(bolt)//['a', 'b']
+
+    var bolt = _.map ({"a":10, "b": "string"}, function(value, index, list) { return  value + 10; });
+    console.log(bolt)//[20, "string10"]
+
+
+</script>
+
+</body>
+</html>
